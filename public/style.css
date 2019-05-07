@@ -5,6 +5,7 @@ button:focus, input:focus {
 }
 
 .btn {
+    align-self: flex-start;
     background-color: #108bea;
     border-radius: 2px;
     color: white;
@@ -154,7 +155,7 @@ body {
     overflow: auto;
     margin: 1rem 1rem 2rem 0;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     background-color: #ffffff;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.08)
 }
@@ -252,6 +253,8 @@ body {
 }
 
 .cart ul .cart-item .item-qty {
+    display: block;
+    margin-top: 0.5rem;
     margin-right: 1rem;
     font-weight: bold;
 }

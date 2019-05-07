@@ -43,5 +43,5 @@ if (process.env.NODE_ENV !== "production") {
 
 var port = process.env.PORT || 3000;
 server.listen(port, function () {
-	console.log("Listening on port ".concat(port));
+	console.log("App available at http://localhost:".concat(port));
 });
