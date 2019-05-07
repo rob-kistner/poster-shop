@@ -7,23 +7,19 @@ new Vue({
       { id: 2, title: 'Product 2', price: 9.99 },
       { id: 3, title: 'Product 3', price: 9.99 },
     ],
-    cart: []
-  },
-  computed: {
-    totalFormatted() {
-      return `\$ ${this.total}`
-    }
+    cart: [],
+    search: '',
   },
   methods: {
+
     addToCart(product) {
-      this.total += product.price
-      var found = false;
-      for(var i=0; i<this.cart.length; i++) {
-        if(this.cart[i].id === product.id) {
-          this.cart[i].qty++
-          found = true;
+      let found = false;
+      this.cart.map(cartitem => {
+        if(cartitem.id === product.id) {
+          found = true
+          return cartitem.qty++
         }
-      }
+      })
       if(!found) {
         this.cart.push({
           id: product.id,
@@ -32,6 +28,31 @@ new Vue({
           qty: 1
         })
       }
+      this.total += product.price
+    },
+
+    inc(item) {
+      item.qty++
+      this.total += item.price
+    },
+
+    dec(item) {
+      item.qty--
+      this.total -= item.price
+      if (item.qty <= 0) {
+        this.cart = this.cart.filter(cartitem => cartitem.id !== item.id)
+      }
+    },
+
+    onSubmit(e) {
+      console.log(e)
     }
-  }
+
+  },
+  filters: {
+    currency: price => {
+      return `\$${price.toFixed(2)}`
+    }
+  },
+
 })
