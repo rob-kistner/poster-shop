@@ -4,14 +4,14 @@
     "title": "Calico Cat",
     "thumb": "cat1.jpg",
     "price": 19.95,
-    "tags": [ "cat", "orange" ]
+    "tags": [ "cat", "orange", "calico" ]
   },
   {
     "id": 2,
     "title": "Cat Close Up",
     "thumb": "cat2.jpg",
     "price": 23.95,
-    "tags": [ "cat", "face" ]
+    "tags": [ "cat", "face", "close" ]
   },
   {
     "id": 3,
@@ -46,7 +46,7 @@
     "title": "Blue-Eyed Cat",
     "thumb": "cat7.jpg",
     "price": 19.95,
-    "tags": [ "cat", "blue" ]
+    "tags": [ "cat", "blue", "eyed" ]
   },
   {
     "id": 8,

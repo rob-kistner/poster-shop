@@ -6,7 +6,7 @@
     <title>Vue.js Poster Shop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="/public/favicon.ico">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,700,800" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic,800" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/public/style.css">
 </head>
@@ -26,10 +26,20 @@
         </div>
     </div>
     <div class="main container">
-        <div class="products" v-if="!products.length">
+        <div class="products" v-if="!products.length && search.length !== 0">
+            <p class="search-results">
+               No posters found for your search term 
+               <em><strong>{{ lastSearch }}</strong></em>
+            </p>
+        </div>
+        <div class="products" v-else-if="!products.length && search.length === 0">
             <p>Search for posters above…</p>
         </div>
         <div class="products" v-else>
+            <p class="search-results">
+                Found <strong>{{ products.length }}</strong> results 
+                for search term <em><strong>{{ lastSearch }}</strong></em>.
+            </p>
             <div v-for="product in products" class="product" :key="product.id">
                 <div class="product-image">
                     <img :src="product.thumb" />
@@ -37,8 +47,8 @@
                 <div>
                     <h4 class="product-title">{{ product.title }}</h4>
                     <p class="product-price">{{ product.price | currency }}</p>
+                    <button class="btn add-to-cart" @click="addToCart(product)">Add to Cart</button>
                 </div>
-                <button class="btn add-to-cart" @click="addToCart(product)">Add to Cart</button>
             </div>
         </div>
         <div class="cart">

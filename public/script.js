@@ -5,6 +5,7 @@ new Vue({
     products: [],
     cart: [],
     search: '',
+    lastSearch: '',
     apiurl: '/search/?q='
   },
   methods: {
@@ -43,10 +44,11 @@ new Vue({
 
     onSubmit(e) {
       // vue.resource search
-      this.$http.get(`${this.apiurl}${this.search.toLowerCase()}`)
+      this.$http.get(`${this.apiurl}${this.search}`)
         .then(res => {
           // .body or .data works (?)
           this.products = res.body
+          this.lastSearch = this.search
         }, res => {
           // error callback
           console.log('An error occured')
@@ -56,7 +58,7 @@ new Vue({
   },
   filters: {
     currency: price => {
-      return `\$${price.toFixed(2)}`
+      return `\$ ${price.toFixed(2)}`
     }
   },
 

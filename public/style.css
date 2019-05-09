@@ -185,6 +185,7 @@ body {
 .product .product-price {
   color: #0f6cb2;
   font-size: 1.3rem;
+  font-weight: 700;
 }
 
 .product .add-to-cart {
