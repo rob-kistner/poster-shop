@@ -2,13 +2,10 @@ new Vue({
   el: '#app',
   data: {
     total: 0,
-    products: [
-      { id: 1, title: 'Product 1', price: 9.99 },
-      { id: 2, title: 'Product 2', price: 9.99 },
-      { id: 3, title: 'Product 3', price: 9.99 },
-    ],
+    products: [],
     cart: [],
     search: '',
+    apiurl: '/search/?q='
   },
   methods: {
 
@@ -45,7 +42,15 @@ new Vue({
     },
 
     onSubmit(e) {
-      console.log(e)
+      // vue.resource search
+      this.$http.get(`${this.apiurl}${this.search.toLowerCase()}`)
+        .then(res => {
+          // .body or .data works (?)
+          this.products = res.body
+        }, res => {
+          // error callback
+          console.log('An error occured')
+        })
     }
 
   },
