@@ -6,7 +6,8 @@ new Vue({
     cart: [],
     search: '',
     lastSearch: '',
-    apiurl: '/search/?q='
+    apiurl: '/search/?q=',
+    loading: false
   },
   methods: {
 
@@ -43,15 +44,26 @@ new Vue({
     },
 
     onSubmit(e) {
+      // ux for data loading
+      // clear out current search of products
+      // *********
+      // NOTE: simulated with setTimeout below
+      this.products = []
+      this.loading = true
       // vue.resource search
       this.$http.get(`${this.apiurl}${this.search}`)
         .then(res => {
-          // .body or .data works (?)
-          this.products = res.body
-          this.lastSearch = this.search
+          // simulate data load time
+          setTimeout( function() {
+            // .body or .data works (?)
+            this.products = res.body
+            this.lastSearch = this.search
+            this.loading = false
+          }.bind(this), 250)
         }, res => {
           // error callback
           console.log('An error occured')
+          this.loading = false
         })
     }
 

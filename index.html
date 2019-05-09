@@ -8,11 +8,13 @@
     <link rel="shortcut icon" type="image/x-icon" href="/public/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic,800" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-xVVam1KS4+Qt2OrFa+VdRUoXygyKIuNWUUUBZYv+n27STsJ7oDOHJgfF0bNKLMJF" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/public/style.css">
 </head>
 <body>
 <div id="app">
     <div class="header">
+        <i class="fas fa-sync fa-spin fa-3x is-primary"></i>
         <div class="container">
             <div class="title">
                 <img src="public/logo.png">
@@ -26,20 +28,14 @@
         </div>
     </div>
     <div class="main container">
-        <div class="products" v-if="!products.length && search.length !== 0">
-            <p class="search-results">
-               No posters found for your search term 
-               <em><strong>{{ lastSearch }}</strong></em>
-            </p>
-        </div>
-        <div class="products" v-else-if="!products.length && search.length === 0">
-            <p>Search for posters above…</p>
-        </div>
-        <div class="products" v-else>
-            <p class="search-results">
+        <div class="products">
+            <div v-if="loading">
+                <i class="fas fa-sync fa-spin fa-3x is-primary"></i>
+            </div>
+            <div class="search-results" v-else>
                 Found <strong>{{ products.length }}</strong> results 
-                for search term <em><strong>{{ lastSearch }}</strong></em>.
-            </p>
+                for search term <em><strong>{{ lastSearch }}</strong></em>
+            </div>
             <div v-for="product in products" class="product" :key="product.id">
                 <div class="product-image">
                     <img :src="product.thumb" />

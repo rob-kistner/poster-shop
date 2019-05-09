@@ -1,3 +1,11 @@
+/* RobK vars */
+:root {
+  --primary: #108bea;
+  --primary-dk: #0f6cb2;
+  --secondary: #fdd922;
+  --secondary-dk: #e0bc27;
+}
+
 /* Generic styling */
 
 button:focus, input:focus {
@@ -5,7 +13,7 @@ button:focus, input:focus {
 }
 
 .btn {
-  background-color: #108bea;
+  background-color: var(--primary);
   border-radius: 2px;
   color: white;
   user-select: none;
@@ -15,7 +23,7 @@ button:focus, input:focus {
 }
 
 .btn:hover {
-  background-color: #0f6cb2;
+  background-color: var(--primary-dk);
 }
 
 .btn:active {
@@ -44,7 +52,7 @@ body {
 .header {
   padding: 1rem 2rem;
   flex: 0;
-  background-color: #157ed2;
+  background-color: var(--primary);
 }
 
 .main {
@@ -117,10 +125,10 @@ body {
 }
 
 .search-bar > input[type=submit] {
-  background-color: #fdd922;
+  background-color: var(--secondary);
   color: #333333;
   padding: 1rem;
-  border: 1px solid #e0bc27;
+  border: 1px solid var(--secondary-dk);
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   font-size: 0.8rem;
@@ -183,7 +191,7 @@ body {
 }
 
 .product .product-price {
-  color: #0f6cb2;
+  color: var(--primary);
   font-size: 1.3rem;
   font-weight: 700;
 }
@@ -376,4 +384,22 @@ opacity: 0;
 
 .fade-enter-active {
 transition: opacity 0.5s;
+}
+
+
+/* ----------------------------------------
+RobK Additions
+*/
+
+.is-primary { 
+  color: var(--primary) !important;
+}
+.is-primary-dk { 
+  color: var(--primary-dk) !important;
+}
+.is-secondary { 
+  color: var(--secondary) !important;
+}
+.is-secondary-dk { 
+  color: var(--secondary-dk) !important;
 }
